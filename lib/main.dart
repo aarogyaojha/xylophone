@@ -11,6 +11,23 @@ class XylophoneApp extends StatelessWidget {
     await player.play(AssetSource('note$soundNumber.wav'));
   }
 
+  Expanded buildKey({required Color color, required int soundNumber}) {
+    return Expanded(
+      child: TextButton(
+        style: TextButton.styleFrom(
+          backgroundColor: color,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.zero, // No corner radius
+          ),
+        ),
+        onPressed: () {
+          playSound(soundNumber);
+        },
+        child: Text(""),
+      ),
+    );
+  }
+
   const XylophoneApp({super.key});
 
   @override
@@ -20,105 +37,15 @@ class XylophoneApp extends StatelessWidget {
         backgroundColor: Colors.black,
         body: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Expanded(
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.red,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero, // No corner radius
-                    ),
-                  ),
-                  onPressed: () {
-                    playSound(1);
-                  },
-                  child: Text(""),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.orange,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero, // No corner radius
-                    ),
-                  ),
-                  onPressed: () {
-                    playSound(2);
-                  },
-                  child: Text(""),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.yellow,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero, // No corner radius
-                    ),
-                  ),
-                  onPressed: () {
-                    playSound(3);
-                  },
-                  child: Text(""),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero, // No corner radius
-                    ),
-                  ),
-                  onPressed: () {
-                    playSound(4);
-                  },
-                  child: Text(""),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.teal,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero, // No corner radius
-                    ),
-                  ),
-                  onPressed: () {
-                    playSound(5);
-                  },
-                  child: Text(""),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero, // No corner radius
-                    ),
-                  ),
-                  onPressed: () {
-                    playSound(6);
-                  },
-                  child: Text(""),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.purple,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero, // No corner radius
-                    ),
-                  ),
-                  onPressed: () {
-                    playSound(7);
-                  },
-                  child: Text(""),
-                ),
-              ),
+              buildKey(color: Colors.red, soundNumber: 1),
+              buildKey(color: Colors.orange, soundNumber: 2),
+              buildKey(color: Colors.yellow, soundNumber: 3),
+              buildKey(color: Colors.green, soundNumber: 4),
+              buildKey(color: Colors.teal, soundNumber: 5),
+              buildKey(color: Colors.blue, soundNumber: 6),
+              buildKey(color: Colors.purple, soundNumber: 7),
             ],
           ),
         ),
